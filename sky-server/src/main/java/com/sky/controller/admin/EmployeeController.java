@@ -85,4 +85,11 @@ public class EmployeeController {
         employeeService.save(employeeDTO);
         return Result.success();
     }
+
+    //员工状态禁用
+    @PostMapping("/status/{status}")
+    public Result updateEmployeeStatus(@PathVariable int status,long id) {
+            employeeService.updateEmployeeStatus(status,id);
+            return Result.success();
+      }
 }

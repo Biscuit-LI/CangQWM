@@ -21,4 +21,6 @@ public interface EmployeeService {
 
     void save(EmployeeDTO employeeDTO);
 
+    void updateEmployeeStatus(int status, long id);
+
 }

@@ -26,4 +26,6 @@ public interface EmployeeMapper {
             "(#{name},#{username},#{password},#{phone},#{sex},#{idNumber},#{createTime},#{updateTime},#{createUser},#{updateUser})")
     void save(Employee employee);
 
+    //员工状态管理（是否禁用）
+    void updateEmployee(Employee employee);
 }

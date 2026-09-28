@@ -97,4 +97,14 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         employeeMapper.save(employee);
     }
+
+    //员工状态禁用
+    @Override
+    public void updateEmployeeStatus(int status, long id) {
+        Employee employee = Employee.builder()
+                .id(id)
+                .status(status)
+                .build();
+        employeeMapper.updateEmployee(employee);
+    }
 }
