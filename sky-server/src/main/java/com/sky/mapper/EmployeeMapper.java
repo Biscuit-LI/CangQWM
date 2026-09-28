@@ -27,5 +27,11 @@ public interface EmployeeMapper {
     void save(Employee employee);
 
     //员工状态管理（是否禁用）
+    //更新员工信息
     void updateEmployee(Employee employee);
+
+    //id查询员工信息
+    @Select("select employee.* from employee where id=#{id}")
+    Employee getEmployeeById(int id);
+
 }
