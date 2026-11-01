@@ -21,4 +21,6 @@ public interface DishService {
 
     void deleteDish(List<Long> ids);
 
+    List<DishVO> getDishList(String categoryId);
+
 }

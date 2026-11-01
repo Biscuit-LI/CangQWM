@@ -67,6 +67,10 @@ public class DishController {
         return Result.success();
     }
 
-
-
+    //根据分类查询菜品
+    @GetMapping("/list")
+    public Result<List<DishVO>> getDishList(@RequestParam String categoryId){
+        List<DishVO> dishList=dishService.getDishList(categoryId);
+        return Result.success(dishList);
+    }
 }

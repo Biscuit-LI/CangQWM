@@ -119,4 +119,10 @@ public class DishServiceImpl implements DishService {
         dishMapper.deleteDish(ids);
         dishFlavorMapper.deleteDishFlavor(ids);
     }
+
+    //根据分类查询菜品
+    @Override
+    public List<DishVO> getDishList(String categoryId) {
+        return dishMapper.getDishList(categoryId);
+    }
 }

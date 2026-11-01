@@ -48,4 +48,8 @@ public interface DishMapper {
 
     //删除菜品
     void deleteDish(List<Long> ids);
+
+    //根据分类查询菜品
+    @Select("select dish.* from dish where category_id=#{categoryId}")
+    List<DishVO> getDishList(String categoryId);
 }
