@@ -8,4 +8,19 @@
             #{id}
         </foreach>
     </select>
+    <insert id="addSetmealDish" >
+        insert into setmeal_dish(setmeal_id, dish_id, name, price, copies)
+        values
+        <foreach collection="setmealDishes" item="dish" separator=",">
+            (#{dish.setmealId},#{dish.dishId},#{dish.name},#{dish.price},#{dish.copies})
+        </foreach>
+    </insert>
+
+    <delete id="deleteSetmeal">
+        delete from setmeal_dish sd where sd.setmeal_id in
+        <foreach collection="ids" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+
+    </delete>
 </mapper>
