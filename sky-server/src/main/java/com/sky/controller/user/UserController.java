@@ -2,6 +2,7 @@ package com.sky.controller.user;
 
 
 import com.sky.constant.JwtClaimsConstant;
+import com.sky.dto.UserLoginDTO;
 import com.sky.entity.User;
 import com.sky.properties.JwtProperties;
 import com.sky.result.Result;
@@ -32,19 +33,20 @@ public class UserController {
 
 
     @PostMapping("/login")
-    public Result<UserLoginVO> login(@RequestBody UserLoginVO userLoginVO) {
+    public Result<UserLoginVO> login(@RequestBody UserLoginDTO userLoginDTO) {
         log.info("用户端登录");
-        User user=userService.login(userLoginVO);
+        User user=userService.login(userLoginDTO);
 
         //JWT
         Map<String,Object> claim=new HashMap<>();
         claim.put(JwtClaimsConstant.USER_ID,user.getId());
-        JwtUtil.createJWT(jwtProperties.getUserSecretKey(),jwtProperties.getUserTtl(),claim);
+        String token = JwtUtil.createJWT(jwtProperties.getUserSecretKey(), jwtProperties.getUserTtl(), claim);
 
+        log.info("jwt:{}",token);
         UserLoginVO userLoginVOne= UserLoginVO.builder()
                 .id(user.getId())
                 .openid(user.getOpenid())
-                .token(user.getOpenid())
+                .token(token)
                 .build();
 
         return Result.success(userLoginVOne);
