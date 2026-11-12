@@ -46,4 +46,7 @@ public interface SetmealMapper {
     //更新套餐信息
     @AutoFill(OperationType.UPDATE)
     void updateSetmeal(Setmeal setmeal);
+
+    @Select("select setmeal.* from setmeal where status=#{status} and category_id=#{categroyId}")
+    List<Setmeal> list(Setmeal setmeal);
 }

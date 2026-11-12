@@ -52,4 +52,7 @@ public interface DishMapper {
     //根据分类查询菜品
     @Select("select dish.* from dish where category_id=#{categoryId}")
     List<DishVO> getDishList(String categoryId);
+
+    @Select("select dish.* from dish where dish.category_id=#{categoryId} and dish.status=#{status}")
+    List<Dish> list(Dish dish);
 }

@@ -1,6 +1,7 @@
 package com.sky.mapper;
 
 import com.sky.entity.SetmealDish;
+import com.sky.vo.DishItemVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -21,4 +22,7 @@ public interface SetmealDishMapper {
 
     //删除菜品信息
     void deleteSetmeal(List<Long> ids);
+
+    @Select("select sd.name as name,sd.copies as copies,d.image as image,d.description as description from setmeal_dish sd left join dish d on sd.dish_id = d.id where sd.setmeal_id=#{id}")
+    List<DishItemVO> getDishItemBySetmealId(Long id);
 }
