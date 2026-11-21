@@ -46,6 +46,7 @@ public class UserSetmealServiceImpl implements UserSetmealService{
      * @param setmeal
      * @return
      */
+    @Override
     public List<Setmeal> list(Setmeal setmeal) {
         List<Setmeal> list = setmealMapper.list(setmeal);
         return list;
@@ -56,6 +57,7 @@ public class UserSetmealServiceImpl implements UserSetmealService{
      * @param id
      * @return
      */
+    @Override
     public List<DishItemVO> getDishItemById(Long id) {
         return setmealDishMapper.getDishItemBySetmealId(id);
     }
