@@ -2,6 +2,7 @@ package com.sky.controller.user;
 
 
 import com.sky.dto.OrdersDTO;
+import com.sky.dto.OrdersSubmitDTO;
 import com.sky.result.Result;
 import com.sky.service.OrderService;
 import com.sky.service.UserService;
@@ -26,9 +27,9 @@ public class OrderController {
 
     //插入新订单
     @PostMapping("/submit")
-    public Result<OrderSubmitVO> submitOrder(@RequestBody OrdersDTO ordersDTO){
+    public Result<OrderSubmitVO> submitOrder(@RequestBody OrdersSubmitDTO ordersSubmitDTO){
 
-        OrderSubmitVO orderSubmitVO=orderService.submitOrder(ordersDTO);
+        OrderSubmitVO orderSubmitVO=orderService.submitOrder(ordersSubmitDTO);
 
         return Result.success(orderSubmitVO);
     }

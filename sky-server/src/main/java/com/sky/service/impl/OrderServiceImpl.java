@@ -4,6 +4,7 @@ package com.sky.service.impl;
 import com.sky.constant.MessageConstant;
 import com.sky.context.BaseContext;
 import com.sky.dto.OrdersDTO;
+import com.sky.dto.OrdersSubmitDTO;
 import com.sky.entity.AddressBook;
 import com.sky.entity.OrderDetail;
 import com.sky.entity.Orders;
@@ -44,7 +45,7 @@ public class OrderServiceImpl implements OrderService{
 
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public OrderSubmitVO submitOrder(OrdersDTO ordersDTO) {
+    public OrderSubmitVO submitOrder(OrdersSubmitDTO ordersDTO) {
         //校验前端数据(地址栏，购物车是否为空)
         Long addressBookId=ordersDTO.getAddressBookId();
         AddressBook addressBook= addressBookMapper.getById(addressBookId);
@@ -68,7 +69,7 @@ public class OrderServiceImpl implements OrderService{
         orders.setOrderTime(LocalDateTime.now());
         orders.setPhone(addressBook.getPhone());
         orders.setAddress(addressBook.getDetail());
-        orders.setStatus(Orders.UN_PAID);
+        orders.setPayStatus(Orders.UN_PAID);
         orders.setConsignee(addressBook.getConsignee());
 
         orderMapper.insert(orders);
